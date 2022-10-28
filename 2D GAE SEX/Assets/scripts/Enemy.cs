@@ -5,6 +5,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     public float Speed = 1;
+    public GameObject ExplosionFx;
     private Rigidbody2D _enemyRb;
     private GameObject _Player;
     // Start is called before the first frame update
@@ -19,5 +20,13 @@ public class Enemy : MonoBehaviour
     {
         Vector2 lookDirection = (_Player.transform.position - transform.position).normalized;
         _enemyRb.AddForce(lookDirection * Speed);
+    }
+    private void OnTriggerEnter2D(Collider2D other) 
+    {
+        if(other.gameObject.CompareTag("die bitch"))
+        {
+            Instantiate(ExplosionFx, transform.position, ExplosionFx.transform.rotation);
+            Destroy(this.gameObject);
+        }
     }
 }
