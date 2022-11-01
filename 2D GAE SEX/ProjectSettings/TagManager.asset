@@ -7,6 +7,7 @@ TagManager:
   - Enemy
   - player
   - die bitch
+  - power
   layers:
   - Default
   - TransparentFX

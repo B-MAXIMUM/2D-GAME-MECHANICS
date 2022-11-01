@@ -1,10 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class PlayerControll : MonoBehaviour
 {
     public float Speed = 10;
+    public GameObject PowerUpTime;
+    public bool IsPoweredUp = false;
     public GameObject ExplosionFx;
     private Rigidbody2D _playerRb;
     // Start is called before the first frame update
@@ -27,8 +31,22 @@ public class PlayerControll : MonoBehaviour
         if(other.gameObject.CompareTag("die bitch"))
         {
             Instantiate(ExplosionFx, other.transform.position, ExplosionFx.transform.rotation);
-            //Destroy(this.gameObject);
             gameObject.SetActive(false);
+            SceneManager.LoadScene(0);
         }
+
+        if(other.gameObject.CompareTag("power"))
+        { 
+            Destroy(other.gameObject);
+            PowerUpTime.gameObject.SetActive(true);
+            IsPoweredUp = true;
+            StartCoroutine(PowerupCountDownRoutine());
+        } 
+    } 
+    IEnumerator PowerupCountDownRoutine() 
+    { 
+        yield return new WaitForSeconds(10);
+        PowerUpTime.gameObject.SetActive(false);
+        IsPoweredUp = false; 
     }
 }
