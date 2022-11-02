@@ -294,9 +294,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22f4a052c3af15645b356b6d97fb00ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemyPrefab: {fileID: 6503522454249771865, guid: 8476a0e5965f1ff41b3c9b8590d892f3, type: 3}
+  EnemyPrefab: {fileID: 5712089605544623488, guid: bc7c5021c49db294db564ffc63992e51, type: 3}
+  PowerupPrefab: {fileID: 6503522454249771865, guid: 8476a0e5965f1ff41b3c9b8590d892f3, type: 3}
   XRange: 6.1
   YRange: 2.1
+  EnemyCount: 0
+  WaveCount: 1
 --- !u!1 &279158874
 GameObject:
   m_ObjectHideFlags: 0
@@ -601,7 +604,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &720667664
 GameObject:
@@ -1182,7 +1185,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1841106034
 GameObject:
@@ -1336,7 +1339,7 @@ GameObject:
   - component: {fileID: 2064685617}
   - component: {fileID: 2064685618}
   m_Layer: 3
-  m_Name: Circle
+  m_Name: Power
   m_TagString: power
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
