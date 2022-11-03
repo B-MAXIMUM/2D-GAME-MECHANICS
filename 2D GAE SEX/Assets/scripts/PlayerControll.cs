@@ -30,7 +30,7 @@ public class PlayerControll : MonoBehaviour
     {
         if(other.gameObject.CompareTag("die bitch"))
         {
-            Instantiate(ExplosionFx, other.transform.position, ExplosionFx.transform.rotation);
+            Instantiate(ExplosionFx, transform.position, ExplosionFx.transform.rotation);
             gameObject.SetActive(false);
             SceneManager.LoadScene(0);
         }
@@ -42,6 +42,13 @@ public class PlayerControll : MonoBehaviour
             IsPoweredUp = true;
             StartCoroutine(PowerupCountDownRoutine());
         } 
+        
+        if( other.gameObject.CompareTag("Enemy") && IsPoweredUp )
+        {
+            Destroy(other.gameObject);
+            IsPoweredUp = false;
+            PowerUpTime.gameObject.SetActive(false);
+        }
     } 
     IEnumerator PowerupCountDownRoutine() 
     { 

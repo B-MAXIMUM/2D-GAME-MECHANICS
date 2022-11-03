@@ -28,5 +28,10 @@ public class Enemy : MonoBehaviour
             Instantiate(ExplosionFx, transform.position, ExplosionFx.transform.rotation);
             Destroy(this.gameObject);
         }
+        if(other.gameObject.CompareTag("DeathField"))
+        {
+            Instantiate(ExplosionFx, transform.position, ExplosionFx.transform.rotation);
+            Destroy(this.gameObject);
+        }
     }
 }

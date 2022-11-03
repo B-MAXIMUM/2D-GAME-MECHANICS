@@ -8,6 +8,7 @@ TagManager:
   - player
   - die bitch
   - power
+  - DeathField
   layers:
   - Default
   - TransparentFX
