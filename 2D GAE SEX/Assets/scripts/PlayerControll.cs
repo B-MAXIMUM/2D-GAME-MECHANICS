@@ -11,10 +11,12 @@ public class PlayerControll : MonoBehaviour
     public bool IsPoweredUp = false;
     public GameObject ExplosionFx;
     private Rigidbody2D _playerRb;
+    private SpriteRenderer _PlayerSr;
     // Start is called before the first frame update
     void Start()
     {
         _playerRb = GetComponent<Rigidbody2D>();
+        _PlayerSr = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -30,9 +32,7 @@ public class PlayerControll : MonoBehaviour
     {
         if(other.gameObject.CompareTag("die bitch"))
         {
-            Instantiate(ExplosionFx, transform.position, ExplosionFx.transform.rotation);
-            gameObject.SetActive(false);
-            SceneManager.LoadScene(0);
+            StartCoroutine(DEDMOMEN());
         }
 
         if(other.gameObject.CompareTag("power"))
@@ -55,5 +55,15 @@ public class PlayerControll : MonoBehaviour
         yield return new WaitForSeconds(10);
         PowerUpTime.gameObject.SetActive(false);
         IsPoweredUp = false; 
+    }
+    IEnumerator DEDMOMEN()
+    {
+        
+        Instantiate(ExplosionFx, transform.position, ExplosionFx.transform.rotation);
+        IsPoweredUp = false;
+        PowerUpTime.gameObject.SetActive(false);
+        _PlayerSr.enabled = false;
+        yield return new WaitForSeconds(1.4f);
+        SceneManager.LoadScene(0);
     }
 }
